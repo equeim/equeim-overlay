@@ -12,7 +12,7 @@ DESCRIPTION="Plugin for xfce4-panel to show StatusNotifierItems (also known as A
 HOMEPAGE="https://github.com/equeim:/xfce4-snw-plugin"
 SRC_URI="https://github.com/equeim/xfce4-snw-plugin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
