@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit python-any-r1 vala waf-utils
 
 DESCRIPTION="Plugin for xfce4-panel to show StatusNotifierItems (also known as AppIndicators)"
-HOMEPAGE="https://github.com/equeim:/xfce4-snw-plugin"
+HOMEPAGE="https://github.com/equeim/xfce4-snw-plugin"
 SRC_URI="https://github.com/equeim/xfce4-snw-plugin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
