@@ -10,7 +10,7 @@ inherit python-any-r1 vala waf-utils
 
 MY_PN="snw-plugin"
 
-DESCRIPTION="Plugin for xfce4-panel to show StatusNotifierItems (also known as AppIndicators)"
+DESCRIPTION="Plugin for mate-panel to show StatusNotifierItems (also known as AppIndicators)"
 HOMEPAGE="https://github.com/equeim/snw-plugin"
 SRC_URI="https://github.com/equeim/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
