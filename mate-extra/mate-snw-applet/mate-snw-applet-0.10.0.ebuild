@@ -18,11 +18,22 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+IUSE="gtk3"
+
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 RDEPEND="
-    dev-libs/libdbusmenu[gtk]
-    mate-base/mate-panel[-gtk3]
+    gtk3? (
+        dev-libs/libdbusmenu[gtk3]
+        || (
+            <mate-base/mate-panel-1.18.0[gtk3]
+            >=mate-base/mate-panel-1.18.0
+        )
+    )
+    !gtk3? (
+        dev-libs/libdbusmenu[gtk]
+        <mate-base/mate-panel-1.18.0[-gtk3]
+    )
 "
 
 DEPEND="
@@ -36,5 +47,5 @@ src_prepare() {
 }
 
 src_configure() {
-    waf-utils_src_configure --mate
+    waf-utils_src_configure --mate $(usex gtk3 "--gtk3" "")
 }
