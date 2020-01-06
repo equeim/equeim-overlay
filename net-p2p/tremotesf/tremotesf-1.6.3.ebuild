@@ -1,4 +1,4 @@
-# Copyright 2017-2018 Alexey Rochev <equeim@gmail.com>
+# Copyright 2017-2020 Alexey Rochev <equeim@gmail.com>
 # Distributed under the terms of the GNU General Public License v3
 
 EAPI=6
@@ -31,4 +31,5 @@ RDEPEND="
 DEPEND="
     ${RDEPEND}
     >=dev-qt/qtconcurrent-5.6.0:5
+    >=sys-devel/gettext-0.19.7
 "
