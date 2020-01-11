@@ -1,4 +1,4 @@
-# Copyright 2017-2019 Alexey Rochev <equeim@gmail.com>
+# Copyright 2017-2020 Alexey Rochev <equeim@gmail.com>
 # Distributed under the terms of the GNU General Public License v3
 
 EAPI=6
