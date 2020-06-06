@@ -1,11 +1,9 @@
 # Copyright 2017-2020 Alexey Rochev <equeim@gmail.com>
 # Distributed under the terms of the GNU General Public License v3
 
-EAPI=6
+EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR=ninja
-
-inherit cmake-utils xdg
+inherit cmake xdg
 
 MY_PN="tremotesf2"
 
@@ -33,3 +31,8 @@ DEPEND="
     >=dev-qt/qtconcurrent-5.6.0:5
     >=sys-devel/gettext-0.19.7
 "
+
+src_prepare() {
+    cmake_src_prepare
+    xdg_src_prepare
+}
