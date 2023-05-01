@@ -3,11 +3,11 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit unpacker cmake xdg
 
 DESCRIPTION="Remote GUI for transmission-daemon"
 HOMEPAGE="https://github.com/equeim/tremotesf2"
-SRC_URI="https://github.com/equeim/tremotesf2/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/equeim/tremotesf2/releases/download/${PV}/${P}.tar.zst"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -21,6 +21,7 @@ BDEPEND="
     dev-qt/qtdbus:5
     sys-devel/gettext
     virtual/pkgconfig
+    app-arch/zstd
 "
 
 readonly _shared_libraries="
