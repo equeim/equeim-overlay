@@ -15,15 +15,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-# Dpendencies needed on build machine when cross-compiling
-BDEPEND="
-    dev-qt/qtcore:5
-    dev-qt/qtdbus:5
-    sys-devel/gettext
-    virtual/pkgconfig
-    app-arch/zstd
-"
-
 readonly _shared_libraries="
     dev-qt/qtcore:5
     dev-qt/qtnetwork:5[ssl]
@@ -36,18 +27,28 @@ readonly _shared_libraries="
     net-libs/libpsl
 "
 
-readonly _header_only_or_test_libraries="
+# Dependencies needed on build machine when cross-compiling
+BDEPEND="
+    dev-qt/qtcore:5
+    dev-qt/qtdbus:5
+    sys-devel/gettext
+    virtual/pkgconfig
+    app-arch/zstd
+"
+
+# Build time dependencies
+DEPEND="
+    ${_shared_libraries}
     dev-qt/qtconcurrent:5
     dev-libs/cxxopts
     test? ( dev-qt/qttest:5 dev-cpp/cpp-httplib[ssl] )
 "
 
-DEPEND="
+# Runtime dependencies
+RDEPEND="
     ${_shared_libraries}
-    ${_header_only_or_test_libraries}
+    kde-plasma/kwayland-integration:5
 "
-
-RDEPEND="${_shared_libraries}"
 
 src_configure() {
     local mycmakeargs=("-DBUILD_TESTING=$(usex test)")
