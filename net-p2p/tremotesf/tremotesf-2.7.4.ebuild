@@ -16,41 +16,37 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 readonly _shared_libraries="
-    dev-qt/qtcore:5
-    dev-qt/qtnetwork:5[ssl]
-    dev-qt/qtgui:5
-    dev-qt/qtwidgets:5
-    dev-qt/qtdbus:5
-    kde-frameworks/kwidgetsaddons:5
-    kde-frameworks/kwindowsystem:5
+    dev-qt/qtbase:6[dbus,gui,network,ssl,widgets]
+    kde-frameworks/kwidgetsaddons:6
+    kde-frameworks/kwindowsystem:6[X,wayland]
     dev-libs/libfmt
     net-libs/libpsl
 "
 
-# Dependencies needed on build machine when cross-compiling
+# Dependencies needed on build machine when cross-compiling (i.e. build tools)
 BDEPEND="
-    dev-qt/qtcore:5
-    dev-qt/qtdbus:5
+    dev-qt/qtbase:6
+    dev-qt/qttools:6[linguist]
     sys-devel/gettext
     virtual/pkgconfig
     app-arch/zstd
 "
 
-# Build time dependencies
+# Other build time dependencies (header-only libraries and test dependencies)
 DEPEND="
     ${_shared_libraries}
-    dev-qt/qtconcurrent:5
-    dev-libs/cxxopts
-    test? ( dev-qt/qttest:5 dev-cpp/cpp-httplib[ssl] )
+    >=dev-libs/cxxopts-3.2.1
+    test? ( dev-qt/qtbase:6[test] dev-cpp/cpp-httplib[ssl] )
 "
 
 # Runtime dependencies
 RDEPEND="
     ${_shared_libraries}
-    kde-plasma/kwayland-integration:5
+    dev-qt/qtsvg:6
+    kde-frameworks/breeze-icons:6
 "
 
 src_configure() {
-    local mycmakeargs=("-DBUILD_TESTING=$(usex test)")
+    local mycmakeargs=("-DBUILD_TESTING=$(usex test)" "-DTREMOTESF_WITH_HTTPLIB=system")
     cmake_src_configure
 }
